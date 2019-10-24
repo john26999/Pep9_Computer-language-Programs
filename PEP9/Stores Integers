@@ -1,0 +1,33 @@
+;Programer John Wilson
+;Date of Program 24 OCt 2019
+;School Project
+;a Pep/9 Assembly program that reads in and stores two 
+;        integers from the user and prints out their sum 
+;        in the form
+
+              BR      main 
+numOut:  .BLOCK  2           ; Storage for sum 
+num1:    .BLOCK  2           ; Value to add 
+num2:    .BLOCK  2           ; Value to add 
+msg1:    .ASCII  "Enter a value: \x00" 
+msg2:    .ASCII  "First number: \x00" 
+msg3:    .ASCII  "Second number: \x00" 
+msg4:    .ASCII  "Total = \x00" 
+main:    STRO    msg1, d     ; Prompt for number 
+         DECI    num1, d     ; Input first number 
+         STRO    msg1, d     ; Prompt for number 
+         DECI    num2, d     ; Input second number 
+LDWA    num1, d     ; Load first value into AC reg 
+ADDA    num2, d     ; Add second value to AC reg 
+STWA    numOut, d   ; Store the character 
+STRO    msg4, d     ; Display "Total = \x00" 
+DECO    numOut, d   ; Output the sum/character 
+LDBA    '\n', i     ; Output newline 
+STRO    msg2, d     ; Display "First number: \x00" 
+DECO    num1, d     ; Output first number 
+LDBA    '\n', i     ; Output newline 
+STRO    msg3, d     ; Display "Second number: \x00" 
+DECO    num2, d     ; Output second number 
+LDBA    '\n', i     ; Output newline 
+STOP 
+.END
